@@ -30,6 +30,7 @@ public class SecurityConfig {
         public static final String[] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
                         "/login",
                         "/users",
+                        "/actuator",
                         "/favicon.ico",
                         "/h2-console"
         };
@@ -106,7 +107,7 @@ public class SecurityConfig {
                                                                         "startup", "health"))
                                                         .permitAll()
                                                         .requestMatchers(toH2Console()).permitAll()
-                                                        .requestMatchers("/users/**", "/login").permitAll()
+                                                        .requestMatchers("/users/**", "/login", "/actuator/health/**", "/actuator/info").permitAll()
                                                         .requestMatchers("/task").authenticated()
 
                                                         // All other requests require authentication
