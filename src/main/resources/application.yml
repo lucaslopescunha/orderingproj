@@ -1,6 +1,25 @@
 spring:
   application:
     name: orderingproj
+  h2:
+    console:
+      enabled: true               # Enable the H2 console
+      path: /h2-console           # Set the path for the H2 console
+  datasource:
+    url: jdbc:h2:file:./data/orderinjprojdb
+    driverClassName: org.h2.Driver # H2 JDBC driver
+    username: sa                  # Default username for H2
+    password:                     # Default password (none)
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect # Inform JPA/Hibernate that we're using H2
+    hibernate:
+      ddl-auto: update            # Hibernate DDL strategy (e.g., create, create-drop, update, validate, none)
+                                  # 'update' will update the schema based on your entities.
+                                  # For production, consider 'validate' or 'none' and use migrations.
+
+# Optional: Server port if you want to change it from the default 8080
+server:
+  port: 8080
 management:
   endpoints:
     web:
@@ -11,3 +30,10 @@ management:
       probes:
         enabled: true
 
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web.filter.OncePerRequestFilter: DEBUG # Helps track filter chain execution
+jwt:
+  secret-key: 3098230
+  expiration-time: 40
