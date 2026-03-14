@@ -24,6 +24,7 @@ server:
 management:
   server:
     address: 0.0.0.0
+    port: 8080
   endpoints:
     web:
       exposure:
