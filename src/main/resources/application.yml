@@ -20,7 +20,6 @@ spring:
 # Optional: Server port if you want to change it from the default 8080
 server:
   port: 8080
-  address: 0.0.0.0
 management:
   endpoints:
     web:
